@@ -12,8 +12,10 @@
 
 
 **Example usage:**
-*https://fast-reaches-86182.herokuapp.com/December%2015,%202015
-*https://fast-reaches-86182.herokuapp.com/1450137600
+
+https://fast-reaches-86182.herokuapp.com/December%2015,%202015
+
+https://fast-reaches-86182.herokuapp.com/1450137600
 
 Example output:
 `{ "unix": 1450137600, "natural": "December 15, 2015" }`
