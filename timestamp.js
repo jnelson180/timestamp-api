@@ -1,39 +1,56 @@
 var express = require('express');
 var app = express();
 var query;
-// still have to get rid of needing to use query /?
-app.get('', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
+var months = ["January", "February", "March", "April",
+  "May", "June", "July", "August", "September", "October",
+  "November", "December"];
+
+app.get('*', function (req, res) {
+  // declare unix and natural inside get so they are new each time
+  var unix = "";
+  var natural = "";
   
-  // GET URL WITHOUT '/?'
-  var uri_enc = String(req.url.substring(2));
-  
+  // GET URL string without '/'- but still with %20s, etc
+  var uri_enc = String(req.url.substring(1));
+
   // IF URL IS STRING, DECODE URI TO STRING
   if (uri_enc.indexOf("%") > -1) {
      query = decodeURIComponent(uri_enc);
+     console.log("query is " + query);
+     natural = query;
+     unix = (Date.parse(natural)) / 1000;
+     console.log("unix is " + unix);
   }
   
   // ELSE USE NUMBER PASSED TO uri_enc
-  else { query = Number(uri_enc); }
+  else { 
+  	query = Number(uri_enc); 
+  	unix = query;
+  	natural = conDate(unix);
+  }
   
-  console.log(query);
+  console.log("Received a request for " + query);
   
   // CHECK IF 'query' CONTAINS A DATE
   var valid = new Date(query); 
-  console.log(valid);
-  
   if (valid == "Invalid Date") {
-    res.send(JSON.stringify({ unix: null,  natural: null }));
+  	console.log(JSON.stringify({ unix: null,  natural: null }))
+    res.end(JSON.stringify({ unix: null,  natural: null }));
   }
   else {
-    res.send("Good date format received.");
+    console.log(JSON.stringify({ unix: unix, natural: natural }));
+    res.end(JSON.stringify({ unix: unix,  natural: natural }));
   }
-  res.send(query);
-  
 });
 
 app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+  console.log('Timestamp microservice listening on port 8080!');
 });
 
-// NOTE: regex for natural date code ([A-Z]\w+%[0-9]\w+,%[0-3]{2}[0-9]{4})/g
+function conDate(thetime) {
+  var tempDate = new Date(thetime * 1000);
+  var month = months[tempDate.getMonth()];
+  var day = tempDate.getDate();
+  var year = tempDate.getFullYear();
+  return(month + " " + day + ", " + year);
+}
