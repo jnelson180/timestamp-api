@@ -16,6 +16,9 @@
   ],
   "author": "Jake Nelson",
   "license": "ISC",
+  "dependencies": {
+	"express": "4.14.0"
+    },
   "bugs": {
     "url": "https://github.com/jnelson180/timestamp-api/issues"
   },
