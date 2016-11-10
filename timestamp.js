@@ -53,8 +53,8 @@ app.get('/*', function (req, res) {
   }
 });
 
-app.listen(8080, function () {
-  console.log('Timestamp microservice listening on port 8080!');
+app.listen(process.env.PORT, function () {
+  console.log('Timestamp microservice listening on port ' + process.env.PORT);
 });
 
 function conDate(thetime) {
