@@ -10,7 +10,7 @@ app.get('*', function (req, res) {
   var unix = "";
   var natural = "";
   
-  // GET URL string without '/'- but still with %20s, etc
+  // GET URL string without '/'- but still with %20, etc
   var uri_enc = String(req.url.substring(1));
 
   // IF URL IS STRING, DECODE URI TO STRING
@@ -22,7 +22,7 @@ app.get('*', function (req, res) {
      console.log("unix is " + unix);
   }
   
-  // ELSE USE NUMBER PASSED TO uri_enc
+  // ELSE USE NUMBER PASSED TO uri_enc 
   else { 
   	query = Number(uri_enc); 
   	unix = query;
