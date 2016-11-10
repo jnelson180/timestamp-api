@@ -1,0 +1,23 @@
+{
+  "name": "timestamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "timestamp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnelson180/timestamp-api.git"
+  },
+  "keywords": [
+    "timestamp",
+    "microservice"
+  ],
+  "author": "Jake Nelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jnelson180/timestamp-api/issues"
+  },
+  "homepage": "https://github.com/jnelson180/timestamp-api#readme"
+}
