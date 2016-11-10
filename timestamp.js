@@ -5,7 +5,17 @@ var months = ["January", "February", "March", "April",
   "May", "June", "July", "August", "September", "October",
   "November", "December"];
 
-app.get('*', function (req, res) {
+app.set('view engine', 'ejs');
+
+// make express look in public dir for assets (css/js/img/etc)
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res) {
+	console.log("Visitor to home page.");
+	res.render('index');
+});
+
+app.get('/*', function (req, res) {
   // declare unix and natural inside get so they are new each time
   var unix = "";
   var natural = "";
