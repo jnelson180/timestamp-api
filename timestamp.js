@@ -34,7 +34,7 @@ app.get('*', function (req, res) {
   // CHECK IF 'query' CONTAINS A DATE
   var valid = new Date(query); 
   if (valid == "Invalid Date") {
-  	console.log(JSON.stringify({ unix: null,  natural: null }))
+  	console.log(JSON.stringify({ unix: null,  natural: null }));
     res.end(JSON.stringify({ unix: null,  natural: null }));
   }
   else {
